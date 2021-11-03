@@ -7,4 +7,4 @@ RUN go build fullcycle.go
 
 EXPOSE 3000
 
-CMD ["./app"]
+CMD ["./fullcycle"]
