@@ -1,0 +1,20 @@
+#Estágio build 1
+FROM golang:1.17 AS builder
+
+WORKDIR /go/src/app
+
+COPY . .
+RUN go build fullcycle.go
+
+#EXPOSE 3000
+
+#CMD ["./fullcycle"]
+
+#Estágio build 2
+FROM golang:1.17-busybox
+WORKDIR /go/src/app
+COPY --from=builder /go/src/app .
+
+EXPOSE 3000
+
+CMD [ "./fullcycle" ]
